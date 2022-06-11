@@ -8,58 +8,15 @@
   > 
   <!-- #311B92 紫色 -->
     <v-app-bar 
-      color="#dc2626"
+      color="#33691E"
       dense 
       dark
     > 
-      <v-app-bar-nav-icon
+      <!-- <v-app-bar-nav-icon
         @click.stop="drawer = !drawer"> 
-      </v-app-bar-nav-icon>
+      </v-app-bar-nav-icon> -->
       <v-spacer></v-spacer> 
-
-      <!--svg copy in https://heroicons.com/ -->
-          <!-- <v-btn
-                    class="ma-2"
-                    color="primary"
-                    dark
-                    to="/bk4"
-                  >
-                      變更靶位 
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5  mx-auto  " fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-            </svg>
-          </v-btn>  -->
-          <!-- <v-btn
-            class="ma-2 bg-red-700"
-            text
-            icon 
-          >
-            <v-icon color="white" >mdi-magnify</v-icon>
-          </v-btn>
-
-          <v-btn icon color="red lighten-2" to="/bk4">
-            <v-icon ></v-icon>
-          </v-btn> -->
-
-           
-
-            
-
-            <!-- <v-btn icon >
-              <v-icon>mdi-heart</v-icon>
-            </v-btn> -->
-
-
-
-
-            <!-- <v-btn  icon
-                    class="mx-2" 
-                    to="/dtaTb">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-              </svg>
-              
-            </v-btn> -->
+ 
 
             <v-btn  icon
                     class="mx-9" 
@@ -85,144 +42,7 @@
       
     </v-app-bar>
 
-    <v-navigation-drawer
-      v-model="drawer"
-      absolute  
-      temporary 
-      app
-    >
-      <v-list
-        nav
-        dense
-      >
-        <v-list-item-group
-          v-model="group"
-          active-class="deep-purple--text text--accent-4"
-        >
-           
-
-          <!-- <v-list-item> 
-            
-              <v-btn
-                class="ma-2"
-                color="primary" 
-                to="/bk4"
-              >
-                變更靶位 
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5  mx-auto  " fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                </svg>
-              </v-btn> 
-          </v-list-item> -->
-          
-           <v-list-item> 
-              <v-btn
-                class="ma-2"
-                color="primary"
-                dark
-                to="/bk4"
-              >
-                變更靶位 (即將上線)
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5  mx-auto  " fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                </svg>
-              </v-btn> 
-          </v-list-item>
-
-          <!-- <v-list-item> 
-              <v-btn
-                class="ma-2"
-                color="primary"
-                dark
-                to="/bkAdd4"
-              >
-                增修靶位
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5  mx-auto  " fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                </svg>
-              </v-btn> 
-          </v-list-item> -->
-
-          <v-list-item> 
-              <v-btn
-                class="ma-2"
-                color="primary"
-                dark
-                to="/bk4_Display"
-              >
-                現況查詢(手機版)
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5  mx-auto  " fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                </svg>
-              </v-btn> 
-          </v-list-item>
-
-          <v-list-item> 
-              <v-btn
-                class="ma-2"
-                color="primary"
-                dark
-                to="/paymtAdd"
-              >
-                顧客繳費(測試中)
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5  mx-auto  " fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                </svg>
-              </v-btn> 
-          </v-list-item> 
-
-          <v-list-item> 
-              <v-btn
-                class="ma-2"
-                color="primary"
-                dark
-                to="/plst"
-              >
-                使用plst(測試中)
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5  mx-auto  " fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                </svg>
-              </v-btn> 
-          </v-list-item>
-
-          <v-list-item> 
-              <v-btn
-                class="ma-2"
-                color="primary"
-                dark
-                to="/DragDrop"
-              >
-                DragDrop(測試中)
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5  mx-auto  " fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                </svg>
-              </v-btn> 
-          </v-list-item>
-
-          <v-list-item> 
-              <v-btn
-                class="ma-2"
-                color="primary"
-                dark
-                to="/DragDropmList"
-              >
-                DragDrop(測試中)
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5  mx-auto  " fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                </svg>
-              </v-btn> 
-          </v-list-item>
-
-          
-
-          
-
-           
-
-           
-        </v-list-item-group>
-      </v-list>
-    </v-navigation-drawer>
+    
  
     <v-content class="bg-gray-100" > 
          <router-view/> 
