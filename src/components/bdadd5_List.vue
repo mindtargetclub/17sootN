@@ -84,265 +84,157 @@
                     <div> 
                         <div v-for="(tutorial, n) in tutorials" :key="n" v-if="tutorial.pos =='R樓'" @click="setActiveTutorial(tutorial, n)">
                             <div class=" text-xs  py-2 pl-3 my-1 border-2 rounded-sm bg-red-100 border-red-300 " v-if="tutorial.sno =='1'| tutorial.sno =='2' " >
-                                <div class="grid grid-cols-5 gap-1">
-
+                                <div class="grid grid-cols-7 gap-1"> 
                                     <div class="col-span-2 flex Justify-end"> 
                                         <v-btn class=" mx-6"  v-show="dialog"  @click="upld_Claer(tutorial)">
-                                            清理把位
+                                            清掃靶位
                                             </v-btn>
                                         
-                                        <v-chip class="my-2 mr-3"   :color="ChkTime2getColor(tutorial.left_time)" >  {{ tutorial.pos }}_{{ tutorial.sno }}_{{ tutorial.sno_idx }}  </v-chip>
+                                        <v-chip class="my-2 mr-3"   :color="ChkTime2getColor(tutorial.left_time)" >  {{ tutorial.pos }}_{{ tutorial.sno_idx }}  </v-chip>
                                         <v-text-field  v-show="use_BKingGp" class=" mr-3" label="客人備註" v-model=" tutorial.memo " @change="upldplayGp(tutorial)" dense></v-text-field>
                                     </div>
 
-                                    <div class="col-span-3 flex"> 
+                                    <div class="col-span-5 flex"> 
                                         
-                                        <v-text-field solo class=" mx-6" label="牌號"     v-model=" tutorial.tmp_idx "   @change="upldtmp_idx(tutorial)" dense></v-text-field>
-                                        <v-text-field  class=" mx-3" label="離場時間" v-model=" tutorial.left_time " @change="upldleft_time(tutorial)" dense></v-text-field>
+                                        <v-text-field solo class="w-1/5 mx-6" label="牌號"     v-model=" tutorial.tmp_idx "   @change="upldtmp_idx(tutorial)" dense></v-text-field>
+                                        <v-text-field  class="w-1/5 mx-3" label="離場時間" v-model=" tutorial.left_time " @change="upldleft_time(tutorial)" dense></v-text-field>
                                         
-                                       <v-btn-toggle
-                                            v-model="tutorial.ply_statu"
-                                            @change="upldStatu(tutorial)"
-                                            tile
-                                            color="#5E35B1"
-                                            group
-                                        >
-                                            <v-btn  value="首次">
-                                            首次
-                                            </v-btn>
-
-                                            <v-btn value="免講習">
-                                            免講習
-                                            </v-btn>
-
-                                            <v-btn value="續0.5">
-                                            續0.5
-                                            </v-btn>
-
-                                            <v-btn value="續1.0">
-                                            續1.0
-                                            </v-btn>
-                                        </v-btn-toggle> 
+                                       <v-chip-group v-model="tutorial.ply_statu" @change="upldStatu(tutorial)" column  class="w-3/5" >
+                                            <v-chip filter dense outlined value="首次" >  首次 </v-chip>
+                                            <v-chip filter dense outlined value="免講習" >  免講習 </v-chip>
+                                            <v-chip filter dense outlined value="續0.5" @click="left_Mdf(1,tutorial)" >  續時0.5 </v-chip>
+                                            <v-chip filter dense outlined value="續1.0" @click="left_Mdf(2,tutorial)" >  續時1.0 </v-chip>  
+                                        </v-chip-group>
                                     </div> 
                                 </div>
                             </div>
 
                             <div class=" text-xs  py-2 pl-3 my-1 border-2 rounded-sm bg-yellow-100 border-yellow-300 " v-if="tutorial.sno =='3'| tutorial.sno =='4' " >
-                                <div class="grid grid-cols-5 gap-1">
-
+                                <div class="grid grid-cols-7 gap-1"> 
                                     <div class="col-span-2 flex Justify-end"> 
                                         <v-btn class=" mx-6"  v-show="dialog"  @click="upld_Claer(tutorial)">
-                                            清理把位
+                                            清掃靶位
                                             </v-btn>
                                         
-                                        <v-chip class="my-2 mr-3"   :color="ChkTime2getColor(tutorial.left_time)" >  {{ tutorial.pos }}_{{ tutorial.sno }}_{{ tutorial.sno_idx }}  </v-chip>
+                                        <v-chip class="my-2 mr-3"   :color="ChkTime2getColor(tutorial.left_time)" >  {{ tutorial.pos }}_{{ tutorial.sno_idx }}  </v-chip>
                                         <v-text-field  v-show="use_BKingGp" class=" mr-3" label="客人備註" v-model=" tutorial.memo " @change="upldplayGp(tutorial)" dense></v-text-field>
                                     </div>
 
-                                    <div class="col-span-3 flex"> 
+                                    <div class="col-span-5 flex"> 
                                         
-                                        <v-text-field solo class=" mx-6" label="牌號"     v-model=" tutorial.tmp_idx "   @change="upldtmp_idx(tutorial)" dense></v-text-field>
-                                        <v-text-field  class=" mx-3" label="離場時間" v-model=" tutorial.left_time " @change="upldleft_time(tutorial)" dense></v-text-field>
+                                        <v-text-field solo class="w-1/5 mx-6" label="牌號"     v-model=" tutorial.tmp_idx "   @change="upldtmp_idx(tutorial)" dense></v-text-field>
+                                        <v-text-field  class="w-1/5 mx-3" label="離場時間" v-model=" tutorial.left_time " @change="upldleft_time(tutorial)" dense></v-text-field>
                                         
-                                       <v-btn-toggle
-                                            v-model="tutorial.ply_statu"
-                                            @change="upldStatu(tutorial)"
-                                            tile
-                                            color="#5E35B1"
-                                            group
-                                        >
-                                            <v-btn  value="首次">
-                                            首次
-                                            </v-btn>
-
-                                            <v-btn value="免講習">
-                                            免講習
-                                            </v-btn>
-
-                                            <v-btn value="續0.5">
-                                            續0.5
-                                            </v-btn>
-
-                                            <v-btn value="續1.0">
-                                            續1.0
-                                            </v-btn>
-                                        </v-btn-toggle> 
+                                       <v-chip-group v-model="tutorial.ply_statu" @change="upldStatu(tutorial)" column  class="w-3/5" >
+                                            <v-chip filter dense outlined value="首次" >  首次 </v-chip>
+                                            <v-chip filter dense outlined value="免講習" >  免講習 </v-chip>
+                                            <v-chip filter dense outlined value="續0.5" @click="left_Mdf(1,tutorial)" >  續時0.5 </v-chip>
+                                            <v-chip filter dense outlined value="續1.0" @click="left_Mdf(2,tutorial)" >  續時1.0 </v-chip>  
+                                        </v-chip-group>
                                     </div> 
                                 </div>
                             </div>
 
                             <div class=" text-xs  py-2 pl-3 my-1 border-2 rounded-sm bg-green-100 border-green-300 " v-if="tutorial.sno =='5'| tutorial.sno =='6' " >
-                                <div class="grid grid-cols-5 gap-1">
-
+                                <div class="grid grid-cols-7 gap-1"> 
                                     <div class="col-span-2 flex Justify-end"> 
                                         <v-btn class=" mx-6"  v-show="dialog"  @click="upld_Claer(tutorial)">
-                                            清理把位
+                                            清掃靶位
                                             </v-btn>
                                         
-                                        <v-chip class="my-2 mr-3"   :color="ChkTime2getColor(tutorial.left_time)" >  {{ tutorial.pos }}_{{ tutorial.sno }}_{{ tutorial.sno_idx }}  </v-chip>
+                                        <v-chip class="my-2 mr-3"   :color="ChkTime2getColor(tutorial.left_time)" >  {{ tutorial.pos }}_{{ tutorial.sno_idx }}  </v-chip>
                                         <v-text-field  v-show="use_BKingGp" class=" mr-3" label="客人備註" v-model=" tutorial.memo " @change="upldplayGp(tutorial)" dense></v-text-field>
                                     </div>
 
-                                    <div class="col-span-3 flex"> 
+                                    <div class="col-span-5 flex"> 
                                         
-                                        <v-text-field solo class=" mx-6" label="牌號"     v-model=" tutorial.tmp_idx "   @change="upldtmp_idx(tutorial)" dense></v-text-field>
-                                        <v-text-field  class=" mx-3" label="離場時間" v-model=" tutorial.left_time " @change="upldleft_time(tutorial)" dense></v-text-field>
+                                        <v-text-field solo class="w-1/5 mx-6" label="牌號"     v-model=" tutorial.tmp_idx "   @change="upldtmp_idx(tutorial)" dense></v-text-field>
+                                        <v-text-field  class="w-1/5 mx-3" label="離場時間" v-model=" tutorial.left_time " @change="upldleft_time(tutorial)" dense></v-text-field>
                                         
-                                       <v-btn-toggle
-                                            v-model="tutorial.ply_statu"
-                                            @change="upldStatu(tutorial)"
-                                            tile
-                                            color="#5E35B1"
-                                            group
-                                        >
-                                            <v-btn  value="首次">
-                                            首次
-                                            </v-btn>
-
-                                            <v-btn value="免講習">
-                                            免講習
-                                            </v-btn>
-
-                                            <v-btn value="續0.5">
-                                            續0.5
-                                            </v-btn>
-
-                                            <v-btn value="續1.0">
-                                            續1.0
-                                            </v-btn>
-                                        </v-btn-toggle> 
+                                       <v-chip-group v-model="tutorial.ply_statu" @change="upldStatu(tutorial)" column  class="w-3/5" >
+                                            <v-chip filter dense outlined value="首次" >  首次 </v-chip>
+                                            <v-chip filter dense outlined value="免講習" >  免講習 </v-chip>
+                                            <v-chip filter dense outlined value="續0.5" @click="left_Mdf(1,tutorial)" >  續時0.5 </v-chip>
+                                            <v-chip filter dense outlined value="續1.0" @click="left_Mdf(2,tutorial)" >  續時1.0 </v-chip>  
+                                        </v-chip-group>
                                     </div> 
                                 </div>
                             </div>
 
                             <div class=" text-xs  py-2 pl-3 my-1 border-2 rounded-sm bg-gray-100 border-gray-300 " v-if="tutorial.sno =='7'| tutorial.sno =='8' " >
-                                <div class="grid grid-cols-5 gap-1">
-
+                                <div class="grid grid-cols-7 gap-1"> 
                                     <div class="col-span-2 flex Justify-end"> 
                                         <v-btn class=" mx-6"  v-show="dialog"  @click="upld_Claer(tutorial)">
-                                            清理把位
+                                            清掃靶位
                                             </v-btn>
                                         
-                                        <v-chip class="my-2 mr-3"   :color="ChkTime2getColor(tutorial.left_time)" >  {{ tutorial.pos }}_{{ tutorial.sno }}_{{ tutorial.sno_idx }}  </v-chip>
+                                        <v-chip class="my-2 mr-3"   :color="ChkTime2getColor(tutorial.left_time)" >  {{ tutorial.pos }}_{{ tutorial.sno_idx }}  </v-chip>
                                         <v-text-field  v-show="use_BKingGp" class=" mr-3" label="客人備註" v-model=" tutorial.memo " @change="upldplayGp(tutorial)" dense></v-text-field>
                                     </div>
 
-                                    <div class="col-span-3 flex"> 
+                                    <div class="col-span-5 flex"> 
                                         
-                                        <v-text-field solo class=" mx-6" label="牌號"     v-model=" tutorial.tmp_idx "   @change="upldtmp_idx(tutorial)" dense></v-text-field>
-                                        <v-text-field  class=" mx-3" label="離場時間" v-model=" tutorial.left_time " @change="upldleft_time(tutorial)" dense></v-text-field>
+                                        <v-text-field solo class="w-1/5 mx-6" label="牌號"     v-model=" tutorial.tmp_idx "   @change="upldtmp_idx(tutorial)" dense></v-text-field>
+                                        <v-text-field  class="w-1/5 mx-3" label="離場時間" v-model=" tutorial.left_time " @change="upldleft_time(tutorial)" dense></v-text-field>
                                         
-                                       <v-btn-toggle
-                                            v-model="tutorial.ply_statu"
-                                            @change="upldStatu(tutorial)"
-                                            tile
-                                            color="#5E35B1"
-                                            group
-                                        >
-                                            <v-btn  value="首次">
-                                            首次
-                                            </v-btn>
-
-                                            <v-btn value="免講習">
-                                            免講習
-                                            </v-btn>
-
-                                            <v-btn value="續0.5">
-                                            續0.5
-                                            </v-btn>
-
-                                            <v-btn value="續1.0">
-                                            續1.0
-                                            </v-btn>
-                                        </v-btn-toggle> 
+                                       <v-chip-group v-model="tutorial.ply_statu" @change="upldStatu(tutorial)" column  class="w-3/5" >
+                                            <v-chip filter dense outlined value="首次" >  首次 </v-chip>
+                                            <v-chip filter dense outlined value="免講習" >  免講習 </v-chip>
+                                            <v-chip filter dense outlined value="續0.5" @click="left_Mdf(1,tutorial)" >  續時0.5 </v-chip>
+                                            <v-chip filter dense outlined value="續1.0" @click="left_Mdf(2,tutorial)" >  續時1.0 </v-chip>  
+                                        </v-chip-group>
                                     </div> 
                                 </div>
                             </div>
 
                             <div class=" text-xs  py-2 pl-3 my-1 border-2 rounded-sm bg-blue-100 border-blue-300 " v-if="tutorial.sno =='9'| tutorial.sno =='10' " >
-                                <div class="grid grid-cols-5 gap-1">
-
+                                <div class="grid grid-cols-7 gap-1"> 
                                     <div class="col-span-2 flex Justify-end"> 
                                         <v-btn class=" mx-6"  v-show="dialog"  @click="upld_Claer(tutorial)">
-                                            清理把位
+                                            清掃靶位
                                             </v-btn>
                                         
-                                        <v-chip class="my-2 mr-3"   :color="ChkTime2getColor(tutorial.left_time)" >  {{ tutorial.pos }}_{{ tutorial.sno }}_{{ tutorial.sno_idx }}  </v-chip>
+                                        <v-chip class="my-2 mr-3"   :color="ChkTime2getColor(tutorial.left_time)" >  {{ tutorial.pos }}_{{ tutorial.sno_idx }}  </v-chip>
                                         <v-text-field  v-show="use_BKingGp" class=" mr-3" label="客人備註" v-model=" tutorial.memo " @change="upldplayGp(tutorial)" dense></v-text-field>
                                     </div>
 
-                                    <div class="col-span-3 flex"> 
+                                    <div class="col-span-5 flex"> 
                                         
-                                        <v-text-field solo class=" mx-6" label="牌號"     v-model=" tutorial.tmp_idx "   @change="upldtmp_idx(tutorial)" dense></v-text-field>
-                                        <v-text-field  class=" mx-3" label="離場時間" v-model=" tutorial.left_time " @change="upldleft_time(tutorial)" dense></v-text-field>
+                                        <v-text-field solo class="w-1/5 mx-6" label="牌號"     v-model=" tutorial.tmp_idx "   @change="upldtmp_idx(tutorial)" dense></v-text-field>
+                                        <v-text-field  class="w-1/5 mx-3" label="離場時間" v-model=" tutorial.left_time " @change="upldleft_time(tutorial)" dense></v-text-field>
                                         
-                                       <v-btn-toggle
-                                            v-model="tutorial.ply_statu"
-                                            @change="upldStatu(tutorial)"
-                                            tile
-                                            color="#5E35B1"
-                                            group
-                                        >
-                                            <v-btn  value="首次">
-                                            首次
-                                            </v-btn>
-
-                                            <v-btn value="免講習">
-                                            免講習
-                                            </v-btn>
-
-                                            <v-btn value="續0.5">
-                                            續0.5
-                                            </v-btn>
-
-                                            <v-btn value="續1.0">
-                                            續1.0
-                                            </v-btn>
-                                        </v-btn-toggle> 
+                                       <v-chip-group v-model="tutorial.ply_statu" @change="upldStatu(tutorial)" column  class="w-3/5" >
+                                            <v-chip filter dense outlined value="首次" >  首次 </v-chip>
+                                            <v-chip filter dense outlined value="免講習" >  免講習 </v-chip>
+                                            <v-chip filter dense outlined value="續0.5" @click="left_Mdf(1,tutorial)" >  續時0.5 </v-chip>
+                                            <v-chip filter dense outlined value="續1.0" @click="left_Mdf(2,tutorial)" >  續時1.0 </v-chip>  
+                                        </v-chip-group>
                                     </div> 
                                 </div>
                             </div>
 
                             <div class=" text-xs  py-2 pl-3 my-1 border-2 rounded-sm bg-red-100 border-red-300 " v-if="tutorial.sno =='11'  " >
-                                <div class="grid grid-cols-5 gap-1">
-
+                                <div class="grid grid-cols-7 gap-1"> 
                                     <div class="col-span-2 flex Justify-end"> 
                                         <v-btn class=" mx-6"  v-show="dialog"  @click="upld_Claer(tutorial)">
-                                            清理把位
+                                            清掃靶位
                                             </v-btn>
                                         
-                                        <v-chip class="my-2 mr-3"   :color="ChkTime2getColor(tutorial.left_time)" >  {{ tutorial.pos }}_{{ tutorial.sno }}_{{ tutorial.sno_idx }}  </v-chip>
+                                        <v-chip class="my-2 mr-3"   :color="ChkTime2getColor(tutorial.left_time)" >  {{ tutorial.pos }}_{{ tutorial.sno_idx }}  </v-chip>
                                         <v-text-field  v-show="use_BKingGp" class=" mr-3" label="客人備註" v-model=" tutorial.memo " @change="upldplayGp(tutorial)" dense></v-text-field>
                                     </div>
 
-                                    <div class="col-span-3 flex"> 
+                                    <div class="col-span-5 flex"> 
                                         
-                                        <v-text-field solo class=" mx-6" label="牌號"     v-model=" tutorial.tmp_idx "   @change="upldtmp_idx(tutorial)" dense></v-text-field>
-                                        <v-text-field  class=" mx-3" label="離場時間" v-model=" tutorial.left_time " @change="upldleft_time(tutorial)" dense></v-text-field>
+                                        <v-text-field solo class="w-1/5 mx-6" label="牌號"     v-model=" tutorial.tmp_idx "   @change="upldtmp_idx(tutorial)" dense></v-text-field>
+                                        <v-text-field  class="w-1/5 mx-3" label="離場時間" v-model=" tutorial.left_time " @change="upldleft_time(tutorial)" dense></v-text-field>
                                         
-                                       <v-btn-toggle
-                                            v-model="tutorial.ply_statu"
-                                            @change="upldStatu(tutorial)"
-                                            tile
-                                            color="#5E35B1"
-                                            group
-                                        >
-                                            <v-btn  value="首次">
-                                            首次
-                                            </v-btn>
-
-                                            <v-btn value="免講習">
-                                            免講習
-                                            </v-btn>
-
-                                            <v-btn value="續0.5">
-                                            續0.5
-                                            </v-btn>
-
-                                            <v-btn value="續1.0">
-                                            續1.0
-                                            </v-btn>
-                                        </v-btn-toggle> 
+                                       <v-chip-group v-model="tutorial.ply_statu" @change="upldStatu(tutorial)" column  class="w-3/5" >
+                                            <v-chip filter dense outlined value="首次" >  首次 </v-chip>
+                                            <v-chip filter dense outlined value="免講習" >  免講習 </v-chip>
+                                            <v-chip filter dense outlined value="續0.5" @click="left_Mdf(1,tutorial)" >  續時0.5 </v-chip>
+                                            <v-chip filter dense outlined value="續1.0" @click="left_Mdf(2,tutorial)" >  續時1.0 </v-chip>  
+                                        </v-chip-group>
                                     </div> 
                                 </div>
                             </div>  
@@ -353,183 +245,32 @@
     
                 <v-tab-item key='k2' value='k2'> 
                    <div> 
-                        <div v-for="(tutorial, n) in tutorials" :key="n" v-if="tutorial.pos =='1樓'" @click="setActiveTutorial(tutorial, n)">
-                            <div class=" text-xs  py-2 pl-3 my-1 border-2 rounded-sm bg-blue-100 border-blue-300 " v-if="tutorial.sno =='12'| tutorial.sno =='13' " >
-                                <div class="grid grid-cols-5 gap-1">
-
+                        <div v-for="(tutorial, n) in tutorials" :key="n" v-if="tutorial.pos =='2F'" @click="setActiveTutorial(tutorial, n)">
+                            <div class=" text-xs  py-2 pl-3 my-1 border-2 rounded-sm bg-blue-100 border-blue-300 " v-if="tutorial.sno =='20'" >
+                                <div class="grid grid-cols-7 gap-1"> 
                                     <div class="col-span-2 flex Justify-end"> 
                                         <v-btn class=" mx-6"  v-show="dialog"  @click="upld_Claer(tutorial)">
-                                            清理把位
+                                            清掃靶位
                                             </v-btn>
                                         
-                                        <v-chip class="my-2 mr-3"   :color="ChkTime2getColor(tutorial.left_time)" >  {{ tutorial.pos }}_{{ tutorial.sno }}_{{ tutorial.sno_idx }}  </v-chip>
+                                        <v-chip class="my-2 mr-3"   :color="ChkTime2getColor(tutorial.left_time)" >  {{ tutorial.pos }}_{{ tutorial.sno_idx }}  </v-chip>
                                         <v-text-field  v-show="use_BKingGp" class=" mr-3" label="客人備註" v-model=" tutorial.memo " @change="upldplayGp(tutorial)" dense></v-text-field>
                                     </div>
 
-                                    <div class="col-span-3 flex"> 
+                                    <div class="col-span-5 flex"> 
                                         
-                                        <v-text-field solo class=" mx-6" label="牌號"     v-model=" tutorial.tmp_idx "   @change="upldtmp_idx(tutorial)" dense></v-text-field>
-                                        <v-text-field  class=" mx-3" label="離場時間" v-model=" tutorial.left_time " @change="upldleft_time(tutorial)" dense></v-text-field>
+                                        <v-text-field solo class="w-1/5 mx-6" label="牌號"     v-model=" tutorial.tmp_idx "   @change="upldtmp_idx(tutorial)" dense></v-text-field>
+                                        <v-text-field  class="w-1/5 mx-3" label="離場時間" v-model=" tutorial.left_time " @change="upldleft_time(tutorial)" dense></v-text-field>
                                         
-                                       <v-btn-toggle
-                                            v-model="tutorial.ply_statu"
-                                            @change="upldStatu(tutorial)"
-                                            tile
-                                            color="#5E35B1"
-                                            group
-                                        >
-                                            <v-btn  value="首次">
-                                            首次
-                                            </v-btn>
-
-                                            <v-btn value="免講習">
-                                            免講習
-                                            </v-btn>
-
-                                            <v-btn value="續0.5">
-                                            續0.5
-                                            </v-btn>
-
-                                            <v-btn value="續1.0">
-                                            續1.0
-                                            </v-btn>
-                                        </v-btn-toggle> 
-                                    </div> 
-                                </div>
-                            </div>
-
-                            <div class=" text-xs  py-2 pl-3 my-1 border-2 rounded-sm bg-green-100 border-green-300 " v-if="tutorial.sno =='14'| tutorial.sno =='15' " >
-                                <div class="grid grid-cols-5 gap-1">
-
-                                    <div class="col-span-2 flex Justify-end"> 
-                                        <v-btn class=" mx-6"  v-show="dialog"  @click="upld_Claer(tutorial)">
-                                            清理把位
-                                            </v-btn>
-                                        
-                                        <v-chip class="my-2 mr-3"   :color="ChkTime2getColor(tutorial.left_time)" >  {{ tutorial.pos }}_{{ tutorial.sno }}_{{ tutorial.sno_idx }}  </v-chip>
-                                        <v-text-field  v-show="use_BKingGp" class=" mr-3" label="客人備註" v-model=" tutorial.memo " @change="upldplayGp(tutorial)" dense></v-text-field>
-                                    </div>
-
-                                    <div class="col-span-3 flex"> 
-                                        
-                                        <v-text-field solo class=" mx-6" label="牌號"     v-model=" tutorial.tmp_idx "   @change="upldtmp_idx(tutorial)" dense></v-text-field>
-                                        <v-text-field  class=" mx-3" label="離場時間" v-model=" tutorial.left_time " @change="upldleft_time(tutorial)" dense></v-text-field>
-                                        
-                                       <v-btn-toggle
-                                            v-model="tutorial.ply_statu"
-                                            @change="upldStatu(tutorial)"
-                                            tile
-                                            color="#5E35B1"
-                                            group
-                                        >
-                                            <v-btn  value="首次">
-                                            首次
-                                            </v-btn>
-
-                                            <v-btn value="免講習">
-                                            免講習
-                                            </v-btn>
-
-                                            <v-btn value="續0.5">
-                                            續0.5
-                                            </v-btn>
-
-                                            <v-btn value="續1.0">
-                                            續1.0
-                                            </v-btn>
-                                        </v-btn-toggle> 
-                                    </div> 
-                                </div>
-                            </div>
-
-                            <div class=" text-xs  py-2 pl-3 my-1 border-2 rounded-sm bg-red-100 border-red-300 " v-if="tutorial.sno =='16'| tutorial.sno =='17' " >
-                                <div class="grid grid-cols-5 gap-1">
-
-                                    <div class="col-span-2 flex Justify-end"> 
-                                        <v-btn class=" mx-6"  v-show="dialog"  @click="upld_Claer(tutorial)">
-                                            清理把位
-                                            </v-btn>
-                                        
-                                        <v-chip class="my-2 mr-3"   :color="ChkTime2getColor(tutorial.left_time)" >  {{ tutorial.pos }}_{{ tutorial.sno }}_{{ tutorial.sno_idx }}  </v-chip>
-                                        <v-text-field  v-show="use_BKingGp" class=" mr-3" label="客人備註" v-model=" tutorial.memo " @change="upldplayGp(tutorial)" dense></v-text-field>
-                                    </div>
-
-                                    <div class="col-span-3 flex"> 
-                                        
-                                        <v-text-field solo class=" mx-6" label="牌號"     v-model=" tutorial.tmp_idx "   @change="upldtmp_idx(tutorial)" dense></v-text-field>
-                                        <v-text-field  class=" mx-3" label="離場時間" v-model=" tutorial.left_time " @change="upldleft_time(tutorial)" dense></v-text-field>
-                                        
-                                       <v-btn-toggle
-                                            v-model="tutorial.ply_statu"
-                                            @change="upldStatu(tutorial)"
-                                            tile
-                                            color="#5E35B1"
-                                            group
-                                        >
-                                            <v-btn  value="首次">
-                                            首次
-                                            </v-btn>
-
-                                            <v-btn value="免講習">
-                                            免講習
-                                            </v-btn>
-
-                                            <v-btn value="續0.5">
-                                            續0.5
-                                            </v-btn>
-
-                                            <v-btn value="續1.0">
-                                            續1.0
-                                            </v-btn>
-                                        </v-btn-toggle> 
-                                    </div> 
-                                </div>
-                            </div>
-
-                            <div class=" text-xs  py-2 pl-3 my-1 border-2 rounded-sm bg-gray-100 border-gray-300 " v-if="tutorial.sno =='18'| tutorial.sno =='19' " >
-                                <div class="grid grid-cols-5 gap-1">
-
-                                    <div class="col-span-2 flex Justify-end"> 
-                                        <v-btn class=" mx-6"  v-show="dialog"  @click="upld_Claer(tutorial)">
-                                            清理把位
-                                            </v-btn>
-                                        
-                                        <v-chip class="my-2 mr-3"   :color="ChkTime2getColor(tutorial.left_time)" >  {{ tutorial.pos }}_{{ tutorial.sno }}_{{ tutorial.sno_idx }}  </v-chip>
-                                        <v-text-field  v-show="use_BKingGp" class=" mr-3" label="客人備註" v-model=" tutorial.memo " @change="upldplayGp(tutorial)" dense></v-text-field>
-                                    </div>
-
-                                    <div class="col-span-3 flex"> 
-                                        
-                                        <v-text-field solo class=" mx-6" label="牌號"     v-model=" tutorial.tmp_idx "   @change="upldtmp_idx(tutorial)" dense></v-text-field>
-                                        <v-text-field  class=" mx-3" label="離場時間" v-model=" tutorial.left_time " @change="upldleft_time(tutorial)" dense></v-text-field>
-                                        
-                                       <v-btn-toggle
-                                            v-model="tutorial.ply_statu"
-                                            @change="upldStatu(tutorial)"
-                                            tile
-                                            color="#5E35B1"
-                                            group
-                                        >
-                                            <v-btn  value="首次">
-                                            首次
-                                            </v-btn>
-
-                                            <v-btn value="免講習">
-                                            免講習
-                                            </v-btn>
-
-                                            <v-btn value="續0.5">
-                                            續0.5
-                                            </v-btn>
-
-                                            <v-btn value="續1.0">
-                                            續1.0
-                                            </v-btn>
-                                        </v-btn-toggle> 
+                                       <v-chip-group v-model="tutorial.ply_statu" @change="upldStatu(tutorial)" column  class="w-3/5" >
+                                            <v-chip filter dense outlined value="首次" >  首次 </v-chip>
+                                            <v-chip filter dense outlined value="免講習" >  免講習 </v-chip>
+                                            <v-chip filter dense outlined value="續0.5" @click="left_Mdf(1,tutorial)" >  續時0.5 </v-chip>
+                                            <v-chip filter dense outlined value="續1.0" @click="left_Mdf(2,tutorial)" >  續時1.0 </v-chip>  
+                                        </v-chip-group>
                                     </div> 
                                 </div>
                             </div> 
-    
                         </div>
                     </div>
                 </v-tab-item>
@@ -652,6 +393,102 @@ export default {
         };
     },
     methods: {
+        left_Mdf(detal,e) {
+
+            if (detal == 1) {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "客人需要續時 30分鐘 嗎？",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: '新增,續時方案 !',
+                    cancelButtonText: '取消!'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        var strAry = e.left_time.split(":");
+                    if (detal == 1) {
+                        if (parseInt(strAry[1]) == 30) {
+                            e.left_time = parseInt(strAry[0]) + 1 + ":00" ;
+                        } 
+                        else if (parseInt(strAry[1]) >= 30) {
+                            e.left_time =
+                                parseInt(strAry[0]) + 1 + ":" + (parseInt(strAry[1]) - 30);
+                        } 
+                        else if (parseInt(strAry[1]) < 30) {
+                            e.left_time =
+                                strAry[0] + ":" + (parseInt(strAry[1]) + 30);
+                        }
+                    }  
+
+                    const data = {
+                        left_time: e.left_time,
+                    };
+
+                    TutorialDataService.update(e.key, data)
+                        .then(() => {
+                            this.message = "更新資料，上傳成功!";
+                        })
+                        .catch((e) => {
+                            console.log(e);
+                        });
+                        
+                        Swal.fire(
+                        '修改完畢!',
+                        '請記得.確認收費',
+                        'success'
+                        )
+                    }
+                    }) 
+                
+            } else if (detal == 2) {
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "客人需要續時 1 小時 嗎？",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: '新增,續時方案 !',
+                    cancelButtonText: '取消!'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        var strAry = e.left_time.split(":");
+                    if (detal == 2) {
+                        e.left_time =
+                            parseInt(strAry[0]) + 1 + ":" + strAry[1];
+                    }
+
+                    const data = {
+                        left_time: e.left_time,
+                    };
+
+                    TutorialDataService.update(e.key, data)
+                        .then(() => {
+                            this.message = "更新資料，上傳成功!";
+                        })
+                        .catch((e) => {
+                            console.log(e);
+                        });
+                        
+                        Swal.fire(
+                        '修改完畢!',
+                        '請記得.確認收費',
+                        'success'
+                        )
+                    }
+                    }) 
+                 
+            }
+
+            
+
+
+
+            
+        },
 
         updateTutorial(e) {
             const data = {
