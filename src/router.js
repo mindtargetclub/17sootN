@@ -5,33 +5,7 @@ Vue.use(Router);
 
 export default new Router({
   // mode: "history",
-  routes: [
-    // {
-    //   path: "/",
-    //   alias: "/tutorials",
-    //   name: "tutorials",
-    //   component: () => import("./components/TutorialsList")
-    // },
-    // {
-    //   path: "/p",
-    //   name: "p",
-    //   component: () => import("./components/p")
-    // }, 
-    // {
-    //   path: "/bkadd",
-    //   name: "bkadd",
-    //   component: () => import("./components/bkAdd")
-    // },
-    // {
-    //   path: "/",
-    //   name: "bkadd",
-    //   component: () => import("./components/bkAdd")
-    // }, 
-    // {
-    //   path: "/pixi",
-    //   name: "pixi",
-    //   component: () => import("./components/pixi")
-    // }, 
+  routes: [ 
     {
       path: "/DragDrop",
       name: "tsing",

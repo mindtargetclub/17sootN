@@ -72,7 +72,7 @@
                 </v-tab>
     
                 <v-tab key='k2' href='#k2'>
-                    1樓
+                    2樓
                 </v-tab>
     
                 <!-- <v-tab key='k3' href='#k3' v-if="!hide">
